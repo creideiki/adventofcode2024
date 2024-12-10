@@ -2,6 +2,7 @@
 
 require 'numo/narray'
 require 'parallel'
+require 'progressbar'
 
 class Map
   attr_reader :height, :width, :map, :init_guard_x, :init_guard_y, :init_guard_dir
@@ -146,7 +147,7 @@ end
 map = Map.new File.read('06.input').lines.map(&:strip)
 map.walk!
 
-puts(Parallel.map(map.route) do |candidate_obstacle|
+puts(Parallel.map(map.route, progress: 'Solving') do |candidate_obstacle|
   simulation = map.clone
   simulation.reset!
   simulation.add_obstacle(candidate_obstacle[0], candidate_obstacle[1])
