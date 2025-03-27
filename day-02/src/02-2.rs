@@ -41,10 +41,7 @@ fn main() {
                 .split_whitespace()
                 .map(|s| s.parse::<i32>().unwrap())
         })
-        .map(|l| {
-            let report = Report::new(l.collect());
-            report.is_safe()
-        })
+        .map(|l| Report::new(l.collect()).is_safe())
         .filter(|safe| *safe)
         .count();
 

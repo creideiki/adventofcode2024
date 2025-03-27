@@ -8,10 +8,12 @@ struct Report {
 
 impl Report {
     fn new(levels: Vec<i32>) -> Report {
-        Report {
+        let mut r = Report {
             levels,
             differences: vec![],
-        }
+        };
+        r.gen_differences();
+        r
     }
 
     fn gen_differences(&mut self) {
@@ -38,11 +40,7 @@ fn main() {
                 .split_whitespace()
                 .map(|s| s.parse::<i32>().unwrap())
         })
-        .map(|l| {
-            let mut report = Report::new(l.collect());
-            report.gen_differences();
-            report.is_safe()
-        })
+        .map(|l| Report::new(l.collect()).is_safe())
         .filter(|safe| *safe)
         .count();
 
