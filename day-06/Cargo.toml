@@ -1,0 +1,11 @@
+[package]
+name = "day-06"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+nalgebra = "*"
+
+[[bin]]
+name = "06-1"
+path = "src/06-1.rs"
