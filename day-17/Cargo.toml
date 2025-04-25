@@ -1,0 +1,11 @@
+[package]
+name = "day-17"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+regex = "*"
+
+[[bin]]
+name = "17-1"
+path = "src/17-1.rs"
